@@ -1,13 +1,16 @@
 import { Badge, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function TrendingCard({
   item: {
+    id,
     title,
     name,
     poster_path,
     release_date,
     first_air_date,
     vote_average,
+    media_type,
   },
 }) {
   const releaseDate = date =>
@@ -25,7 +28,11 @@ export default function TrendingCard({
     (vote_average < 5.0 && 'danger');
 
   return (
-    <Card>
+    <Card
+      as={Link}
+      to={`/${media_type}/${id}`}
+      style={{ textDecoration: 'none', color: 'inherit' }}
+    >
       <Card.Img
         variant="top"
         src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
