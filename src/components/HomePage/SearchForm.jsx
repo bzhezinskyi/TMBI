@@ -30,7 +30,7 @@ export default function SearchForm() {
           id="button-addon2"
           disabled={searchValue === ''}
         >
-          Button
+          Пошук
         </Button>
       </InputGroup>
     </Form>

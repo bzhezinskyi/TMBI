@@ -1,19 +1,49 @@
 import { useNewDate, useNewDateYear, useRunTime } from 'hoocks/useNewDate';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { useState } from 'react';
+import {
+  Badge,
+  Button,
+  Col,
+  Container,
+  Image,
+  Modal,
+  Row,
+} from 'react-bootstrap';
+import { BsFillPlayFill } from 'react-icons/bs';
+import { getMoviesId } from 'services/themoviedb/themoviedb.services';
 
 export default function MovieCard({
   details: {
+    id,
     title,
     poster_path,
     backdrop_path,
     overview,
     release_date,
-    status,
     tagline,
     genres,
     runtime,
+    vote_average,
   },
 }) {
+  const [lgShow, setLgShow] = useState(false);
+  const [video, setVideo] = useState(null);
+  const handleVideo = async () => {
+    const data = await getMoviesId({
+      movieId: id,
+      mediaType: 'movie',
+      detail: '/videos',
+    });
+    console.log('data:', data);
+    setLgShow(true);
+    return setVideo(data.results[0].key);
+  };
+  const voteAverageTxtColor =
+    vote_average >= 7.0 || vote_average < 4.0 ? '' : 'dark';
+  const voteAverageBgColor =
+    (vote_average >= 7.0 && 'success') ||
+    (vote_average >= 5.0 && 'warning') ||
+    (vote_average < 5.0 && 'danger');
   return (
     <>
       <div
@@ -44,6 +74,19 @@ export default function MovieCard({
               <p>{`${useNewDate(release_date)} * ${genres.map(
                 genre => genre.name
               )} * ${useRunTime(runtime)}`}</p>
+
+              <Badge
+                bg={voteAverageBgColor}
+                text={voteAverageTxtColor}
+                className="p-2"
+              >
+                {vote_average.toFixed(1)}
+              </Badge>
+              <span>Оцінки користувачів</span>
+              <Button variant="outline-light" onClick={handleVideo}>
+                <BsFillPlayFill />
+                Відтворити трейлер
+              </Button>
               <p style={{ fontStyle: 'italic', opacity: 0.7 }}>{tagline}</p>
               <b>Опис</b>
               <p>{overview}</p>
@@ -52,13 +95,17 @@ export default function MovieCard({
         </Container>
       </div>
 
-      <Container>
-        <h2>{title}</h2>
-        <p>{overview}</p>
-        <p>{release_date}</p>
-        <p>{status}</p>
-        <p>{tagline}</p>
-      </Container>
+      <Modal size="lg" show={lgShow} onHide={() => setLgShow(false)}>
+        <Modal.Body className="p-0">
+          <you-tube
+            height="400"
+            width="798"
+            video_id={video}
+            controls="0"
+            autoplay="1"
+          ></you-tube>
+        </Modal.Body>
+      </Modal>
     </>
   );
 }

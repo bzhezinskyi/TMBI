@@ -44,7 +44,7 @@ export default function TrendingList() {
       </ButtonGroup>
       <HorizontalScroll>
         {trendingList.map(item => (
-          <TrendingCard item={item} />
+          <TrendingCard key={item.id} item={item} />
         ))}
       </HorizontalScroll>
     </>
