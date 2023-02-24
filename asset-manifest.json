@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/TMBI/static/css/main.6490a0b5.css",
-    "main.js": "/TMBI/static/js/main.73fe3ebb.js",
+    "main.js": "/TMBI/static/js/main.a97c0c01.js",
     "index.html": "/TMBI/index.html",
     "main.6490a0b5.css.map": "/TMBI/static/css/main.6490a0b5.css.map",
-    "main.73fe3ebb.js.map": "/TMBI/static/js/main.73fe3ebb.js.map"
+    "main.a97c0c01.js.map": "/TMBI/static/js/main.a97c0c01.js.map"
   },
   "entrypoints": [
     "static/css/main.6490a0b5.css",
-    "static/js/main.73fe3ebb.js"
+    "static/js/main.a97c0c01.js"
   ]
 }
