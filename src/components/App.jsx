@@ -1,5 +1,6 @@
 import HomePage from 'page/HomePage';
-import MoviePage from 'page/MovieDetailsPage';
+import MovieDetailsPage from 'page/MovieDetailsPage';
+import MoviePage from 'page/MoviePage';
 import SearchPage from 'page/SearchPage';
 import TvPage from 'page/TvDetailsPage';
 import { Route, Routes } from 'react-router-dom';
@@ -11,8 +12,9 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/movie" element={<MoviePage />} />
-        <Route path="/movie/:id" element={<MoviePage />} />
+        <Route path="/movie" element={<MoviePage />}>
+          <Route path="/movie/:id" element={<MovieDetailsPage />} />
+        </Route>
         <Route path="/tv" element={<TvPage />} />
         <Route path="/search/" element={<SearchPage />}>
           <Route path="/search/:type" element={<SearchList />} />

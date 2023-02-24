@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Col, Image, ListGroup, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom/dist';
 import { getSearch } from 'services/themoviedb/themoviedb.services';
 
@@ -24,7 +24,15 @@ export default function SearchList() {
   return (
     <ListGroup>
       {list.map(({ poster_path, title, name, id, overview }) => (
-        <ListGroup.Item key={id}>
+        <ListGroup.Item
+          as={Link}
+          to={`/${type}/${id}`}
+          key={id}
+          style={{
+            textDecoration: 'none',
+            color: 'inherit',
+          }}
+        >
           <Row>
             <Col md="auto">
               <Image

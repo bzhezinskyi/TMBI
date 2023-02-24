@@ -1,9 +1,9 @@
-import MovieCard from 'components/MoviePage/MovieCard';
+import MovieHero from 'components/MoviePage/MovieHero';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMoviesId } from 'services/themoviedb/themoviedb.services';
 
-export default function MoviePage() {
+export default function MovieDetailsPage() {
   const [movie, setMovie] = useState();
 
   const { id } = useParams();
@@ -21,7 +21,7 @@ export default function MoviePage() {
   }
   return (
     <>
-      <MovieCard details={movie} />
+      <MovieHero details={movie} />
     </>
   );
 }

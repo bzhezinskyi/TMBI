@@ -12,7 +12,7 @@ import {
 import { BsFillPlayFill } from 'react-icons/bs';
 import { getMoviesId } from 'services/themoviedb/themoviedb.services';
 
-export default function MovieCard({
+export default function MovieHero({
   details: {
     id,
     title,
