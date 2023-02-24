@@ -1,4 +1,4 @@
-import SearchForm from 'components/HomePage/SearchForm';
+import SearchForm from 'components/SearchForm';
 import TrendingList from 'components/HomePage/TrendingList';
 
 import { Container } from 'react-bootstrap';

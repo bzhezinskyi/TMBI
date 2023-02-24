@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom/dist';
 
 export default function SearchForm() {
+  const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
 
   const handleChange = evt => {
@@ -10,7 +12,7 @@ export default function SearchForm() {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log('searchValue:', searchValue);
+    navigate(`/search/movie?query=${evt.target[0].value}`);
     setSearchValue('');
   };
 

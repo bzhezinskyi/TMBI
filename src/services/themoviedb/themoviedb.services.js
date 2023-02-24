@@ -15,15 +15,14 @@ export const getTrending = async ({ mediaType, timeWindow }) => {
   return data;
 };
 
-export const getSearchMovies = async ({ query = '' }) => {
-  const { data } = await themoviedbApi.get('/search/movie', {
+export const getSearch = async ({ mediaType, query = '' }) => {
+  const { data } = await themoviedbApi.get(`/search/${mediaType}`, {
     params: { api_key: keyApi, query, language: 'uk' },
   });
   return data;
 };
 
 export const getMoviesId = async ({ movieId, mediaType, detail = '' }) => {
-  // '/credits' '/reviews`
   const { data } = await themoviedbApi.get(
     `/${mediaType}/${movieId}${detail}`,
     {

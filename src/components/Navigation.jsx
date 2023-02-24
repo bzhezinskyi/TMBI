@@ -2,13 +2,19 @@ import { Button, Container, Modal, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { useState } from 'react';
-import SearchForm from 'components/HomePage/SearchForm';
+import SearchForm from 'components/SearchForm';
 
 export default function Navigation() {
   const [show, setShow] = useState(false);
   return (
     <>
-      <Navbar collapseOnSelect expand="md" bg="success" variant="dark">
+      <Navbar
+        collapseOnSelect
+        expand="md"
+        bg="success"
+        variant="dark"
+        fixed="top"
+      >
         <Container>
           <Navbar.Brand as={Link} to="/">
             TMBI

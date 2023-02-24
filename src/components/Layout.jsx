@@ -8,7 +8,7 @@ export default function Layout() {
       <header>
         <Navigation />
       </header>
-      <main>
+      <main style={{ marginTop: '57px' }}>
         <Outlet />
       </main>
     </>
