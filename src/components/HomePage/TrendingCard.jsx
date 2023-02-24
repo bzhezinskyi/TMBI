@@ -1,3 +1,4 @@
+import { useNewDateLocal } from 'hoocks/useNewDate';
 import { Badge, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -13,13 +14,6 @@ export default function TrendingCard({
     media_type,
   },
 }) {
-  const releaseDate = date =>
-    new Date(date).toLocaleDateString('uk', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-    });
-
   const voteAverageTxtColor =
     vote_average >= 7.0 || vote_average < 4.0 ? '' : 'dark';
   const voteAverageBgColor =
@@ -31,7 +25,12 @@ export default function TrendingCard({
     <Card
       as={Link}
       to={`/${media_type}/${id}`}
-      style={{ textDecoration: 'none', color: 'inherit' }}
+      style={{
+        textDecoration: 'none',
+        color: 'inherit',
+        width: '180px',
+        margin: '8px',
+      }}
     >
       <Card.Img
         variant="top"
@@ -46,7 +45,7 @@ export default function TrendingCard({
         text={voteAverageTxtColor}
         className="d-flex justify-content-around"
       >
-        <span>{releaseDate(release_date || first_air_date)}</span>
+        <span>{useNewDateLocal(release_date || first_air_date)}</span>
         <span>{vote_average.toFixed(1)}</span>
       </Card.Footer>
     </Card>

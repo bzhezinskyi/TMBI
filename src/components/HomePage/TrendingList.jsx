@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Button, ButtonGroup, Col, Row } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
+import HorizontalScroll from 'react-horizontal-scrolling';
 import { getTrending } from 'services/themoviedb/themoviedb.services';
 import TrendingCard from './TrendingCard';
 
@@ -41,13 +42,11 @@ export default function TrendingList() {
           Цього тижня
         </Button>
       </ButtonGroup>
-      <Row xs={2} sm={3} md={4} lg={5} className="g-4 my-2">
+      <HorizontalScroll>
         {trendingList.map(item => (
-          <Col key={item.id}>
-            <TrendingCard item={item} />
-          </Col>
+          <TrendingCard item={item} />
         ))}
-      </Row>
+      </HorizontalScroll>
     </>
   );
 }
