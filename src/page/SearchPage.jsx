@@ -6,13 +6,13 @@ import { Outlet } from 'react-router-dom/dist';
 export default function SearchPage() {
   return (
     <>
-      <Container>
-        <SearchForm />
+      <Container className="pt-4">
         <Row>
           <Col md="auto">
             <SearchAppBar />
           </Col>
           <Col>
+            <SearchForm />
             <Outlet />
           </Col>
         </Row>

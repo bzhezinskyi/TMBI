@@ -12,9 +12,8 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/movie" element={<MoviePage />}>
-          <Route path="/movie/:id" element={<MovieDetailsPage />} />
-        </Route>
+        <Route path="/movie" element={<MoviePage />} />
+        <Route path="/movie/:id" element={<MovieDetailsPage />} />
         <Route path="/tv" element={<TvPage />} />
         <Route path="/search/" element={<SearchPage />}>
           <Route path="/search/:type" element={<SearchList />} />

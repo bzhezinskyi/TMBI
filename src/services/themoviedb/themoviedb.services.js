@@ -5,6 +5,20 @@ const themoviedbApi = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
 });
 
+export const getList = async ({
+  sorting = 'trending',
+  mediaType,
+  timeWindow,
+}) => {
+  const { data } = await themoviedbApi.get(
+    `/${sorting}/${mediaType}/${timeWindow}`,
+    {
+      params: { api_key: keyApi, language: 'uk' },
+    }
+  );
+  return data;
+};
+
 export const getTrending = async ({ mediaType, timeWindow }) => {
   const { data } = await themoviedbApi.get(
     `/trending/${mediaType}/${timeWindow}`,
