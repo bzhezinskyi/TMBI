@@ -8,10 +8,10 @@ const themoviedbApi = axios.create({
 export const getList = async ({
   sorting = 'trending',
   mediaType,
-  timeWindow,
+  timeWindow = '',
 }) => {
   const { data } = await themoviedbApi.get(
-    `/${sorting}/${mediaType}/${timeWindow}`,
+    `/${sorting}/${mediaType}${timeWindow}`,
     {
       params: { api_key: keyApi, language: 'uk' },
     }
