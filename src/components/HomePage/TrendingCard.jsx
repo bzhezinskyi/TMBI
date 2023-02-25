@@ -1,6 +1,6 @@
 import { useNewDateLocal } from 'hoocks/useNewDate';
 import { Badge, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function TrendingCard({
   item: {
@@ -14,6 +14,8 @@ export default function TrendingCard({
     media_type,
   },
 }) {
+  const { mediaType } = useParams();
+
   const voteAverageTxtColor =
     vote_average >= 7.0 || vote_average < 4.0 ? '' : 'dark';
   const voteAverageBgColor =
@@ -24,7 +26,7 @@ export default function TrendingCard({
   return (
     <Card
       as={Link}
-      to={`/${media_type}/${id}`}
+      to={`/${mediaType || media_type}/${id}`}
       style={{
         textDecoration: 'none',
         color: 'inherit',

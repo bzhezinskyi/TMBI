@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { Accordion, Button, Dropdown } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
-export default function MovieFilter() {
+export default function MediaFilter({ options }) {
+  const { mediaType } = useParams();
+
   const [sorting, setSorting] = useState('Популярні');
-  const [filterSorting, setFilterSorting] = useState('trending');
+  const [filter, setFilter] = useState('trending/movie/week');
 
   const handleSubmit = () => {
-    console.log('filterSorting:', filterSorting);
-    return filterSorting;
+    return options(filter);
   };
 
   return (
     <>
-      <h4>Популярні фільми</h4>
+      <h4>Популярні</h4>
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Сортування</Accordion.Header>
@@ -24,7 +26,7 @@ export default function MovieFilter() {
                 <Dropdown.Item
                   onClick={() => {
                     setSorting('Популярні');
-                    setFilterSorting('trending');
+                    setFilter(`trending/${mediaType}/week`);
                   }}
                 >
                   Популярні
@@ -32,7 +34,7 @@ export default function MovieFilter() {
                 <Dropdown.Item
                   onClick={() => {
                     setSorting('Високий рейтигн');
-                    setFilterSorting('top_rated');
+                    setFilter(`${mediaType}/top_rated`);
                   }}
                 >
                   Високий рейтигн

@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { getList } from 'services/themoviedb/themoviedb.services';
 
-export default function MoviePage() {
-  const [options, seOtoptions] = useState('trending/movie/week');
+export default function TvPage() {
+  const [options, seOtoptions] = useState('trending/tv/week');
 
   const [movieList, setMovieList] = useState(null);
 

@@ -3,18 +3,19 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMoviesId } from 'services/themoviedb/themoviedb.services';
 
-export default function MovieDetailsPage() {
-  const [movie, setMovie] = useState();
-
+export default function DetailsPage() {
+  const { mediaType } = useParams();
   const { id } = useParams();
 
-  const createMovie = async movieId => {
-    const data = await getMoviesId({ movieId, mediaType: 'movie' }).then();
+  const [movie, setMovie] = useState();
+
+  const createMovie = async (movieId, mediaType) => {
+    const data = await getMoviesId({ movieId, mediaType }).then();
     return setMovie(data);
   };
   useEffect(() => {
-    createMovie(id);
-  }, [id]);
+    createMovie(id, mediaType);
+  }, [id, mediaType]);
 
   if (!movie) {
     return;
