@@ -18,6 +18,8 @@ export function useNewDateYear(date) {
 export function useRunTime(runtime) {
   const h = Math.floor(runtime / 60);
   const m = runtime - h * 60;
-
+  if (h === 0) {
+    return `${m}m`;
+  }
   return `${h}h${m}m`;
 }

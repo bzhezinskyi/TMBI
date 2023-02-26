@@ -1,4 +1,5 @@
-import MovieHero from 'components/MoviePage/MovieHero';
+import CreditsList from 'components/DetailsPage/CreditsList';
+import Hero from 'components/DetailsPage/Hero';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMoviesId } from 'services/themoviedb/themoviedb.services';
@@ -22,7 +23,8 @@ export default function DetailsPage() {
   }
   return (
     <>
-      <MovieHero details={movie} />
+      <Hero details={movie} />
+      <CreditsList />
     </>
   );
 }

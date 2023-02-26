@@ -13,7 +13,7 @@ import { BsFillPlayFill } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import { getMoviesId } from 'services/themoviedb/themoviedb.services';
 
-export default function MovieHero({
+export default function Hero({
   details: {
     id,
     title,

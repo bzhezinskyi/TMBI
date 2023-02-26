@@ -38,3 +38,9 @@ export const getMoviesId = async ({ movieId, mediaType, detail = '' }) => {
   );
   return data;
 };
+export const getDetails = async ({ mediaType, id, detail = '' }) => {
+  const { data } = await themoviedbApi.get(`/${mediaType}/${id}${detail}`, {
+    params: { api_key: keyApi },
+  });
+  return data;
+};
